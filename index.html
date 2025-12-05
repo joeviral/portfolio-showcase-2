@@ -1,0 +1,182 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Joetech — Web Developer & Printer</title>
+  <meta name="description" content="Advanced portfolio for Joetech — responsive, projects, contact form, price list and PDF download" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--accent:#0f62fe;--muted:#6b7280;--bg:#0f1724;--card:#0b1220;--glass: rgba(255,255,255,0.06);font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;}
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#071022 0%, #071827 100%);color:#e6eef8;font-family:inherit;}
+    a{color:var(--accent);text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:18px}
+    .hero{position:relative;border-radius:14px;overflow:hidden;margin-bottom:18px}
+    .hero__image{
+      background-image: url('images/background_blue.png');
+      background-size:cover;background-position:center;height:360px;filter:brightness(.65) saturate(.95);
+      position:relative;
+    }
+    .hero__image::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(2,6,23,0.45), rgba(2,6,23,0.55));backdrop-filter:blur(2px)}
+    .hero__content{position:absolute;left:18px;top:18px;z-index:2}
+    .tag{display:inline-block;background:rgba(255,255,255,0.06);padding:6px 10px;border-radius:10px;font-weight:600;color:#e6eef8;margin-bottom:12px}
+    h1{margin:0;font-size:26px}
+    p.lead{margin:6px 0 0;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:1fr 340px;gap:18px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr} .hero__image{height:260px} .hero__content{left:12px;top:12px}}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;padding:14px}
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    @media (max-width:700px){.projects{grid-template-columns:1fr}}
+    .project{padding:10px;border-radius:10px;background:var(--glass)}
+    form input, form textarea, form button{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit;margin-top:8px}
+    .price-list table{width:100%;border-collapse:collapse}
+    .price-list th, .price-list td{padding:10px;text-align:left;border-bottom:1px dashed rgba(255,255,255,0.03)}
+    footer{margin-top:16px;text-align:center;color:var(--muted);font-size:13px}
+    .row{display:flex;gap:12px;align-items:center}
+    .btn{display:inline-block;padding:8px 12px;border-radius:10px;background:var(--accent);color:#fff;border:none;cursor:pointer;font-weight:600}
+    .ghost{background:transparent;border:1px solid rgba(255,255,255,0.06)}
+    .about{display:flex;gap:14px;align-items:center}
+    .about img{width:160px;height:160px;object-fit:cover;border-radius:8px;border:4px solid rgba(255,255,255,0.04)}
+    .work-gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
+    .work-gallery img{width:100%;height:160px;object-fit:cover;border-radius:8px}
+    @media (max-width:480px){ .about{flex-direction:column;align-items:flex-start} .about img{width:120px;height:120px} .work-gallery img{height:120px} }
+  </style>
+h</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <div class="hero__image" role="img" aria-label="Background image (replace images/background_blue.png)"></div>
+      <div class="hero__content">
+        <div class="tag">Web Dev • Designer • Printer</div>
+        <h1>Joetech — Web Developer &amp; Print Specialist</h1>
+        <p class="lead">I build fast, responsive websites & brand materials that help small businesses in Nigeria get noticed online.</p>
+        <div style="margin-top:12px">
+          <button class="btn" id="downloadPortfolioPdf">Download PDF Portfolio</button>
+          <button class="btn ghost" id="contactScroll">Contact Me</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div>
+        <div class="card">
+          <h2 style="margin-top:0">About Me</h2>
+          <div class="about">
+            <img id="aboutPhoto" src="images/about_selfie.png" alt="About photo">
+            <div>
+              <p style="margin:0 0 8px">Hi, glI'm Joetech. I design and build websites, print banners and brand materials, and help small businesses grow online.</p>
+              <p style="margin:0;color:var(--muted)">Location: Cross River State • Contact: +2347072469903</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="height:12px"></div>
+
+        <div class="card">
+          <h2 style="margin-top:0">Work Samples</h2>
+          <p class="lead">Recent print and web jobs (tap to view full image).</p>
+          <div class="work-gallery" id="gallery">
+            <img src="images/work1.png" alt="work1" class="work-thumb">
+            <img src="images/work_2.png" alt="work2" class="work-thumb">
+            <img src="images/work_3.png" alt="work3" class="work-thumb">
+            <img src="images/work_4.png" alt="work4" class="work-thumb">
+          </div>
+        </div>
+
+        <div style="height:12px"></div>
+
+        <div class="card">
+          <h2 style="margin-top:0">Featured Projects</h2>
+          <div class="projects" id="projectsList">
+            <div class="project">
+              <h3>Elegant Bakery Site</h3>
+              <p>Custom one-page site with ordering CTA for a local bakery. Built with HTML/CSS and vanilla JS.</p>
+            </div>
+            <div class="project">
+              <h3>Flex Banner Promo</h3>
+              <p>Design + web page for a printing client to show products and prices online.</p>
+            </div>
+            <div class="project">
+              <h3>Portfolio for Artist</h3>
+              <p>Responsive gallery with contact form & download brochure.</p>
+            </div>
+            <div class="project">
+              <h3>Small Online Store</h3>
+              <p>Simple product listing with Paystack integration placeholder for payments.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <aside>
+        <div class="card">
+          <h3>Contact</h3>
+          <p class="lead">Send me details and I'll reply within 24 hours.</p>
+
+          <form id="contactForm" action="https://formsubmit.co/youremail@example.com" method="POST">
+            <label for="name">Your name</label>
+            <input id="name" name="name" required placeholder="e.g. Ola Ade">
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required placeholder="you@mail.com">
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Tell me about your business or project"></textarea>
+
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://example.com/thanks.html">
+
+            <button type="submit" class="btn" style="margin-top:12px">Send message</button>
+          </form>
+
+          <div style="margin-top:12px;font-size:13px;color:var(--muted)">
+            Or call / WhatsApp: <strong>+2347072469903</strong>
+          </div>
+        </div>
+
+        <div style="height:12px"></div>
+
+        <div class="card">
+          <h4>Skills</h4>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Responsive</span>
+            <span class="tag">Branding</span>
+            <span class="tag">Printing</span>
+          </div>
+        </div>
+
+      </aside>
+    </div>
+
+    <footer>
+      <div>Made with ❤️ by Joetech • ©2025 copyright review </div>
+    </footer>
+  </div>
+
+  <script>
+    // lightweight image lightbox for mobile/desktop
+    document.querySelectorAll('.work-thumb').forEach(function(img){
+      img.addEventListener('click', function(){
+        var src = img.src;
+        var overlay = document.createElement('div');
+        overlay.style.position='fixed';overlay.style.inset=0;overlay.style.background='rgba(0,0,0,0.85)';
+        overlay.style.display='flex';overlay.style.alignItems='center';overlay.style.justifyContent='center';overlay.style.zIndex=9999;
+        var im = document.createElement('img');im.src=src;im.style.maxWidth='95%';im.style.maxHeight='90%';im.style.borderRadius='8px';
+        overlay.appendChild(im);
+        overlay.addEventListener('click', function(){ overlay.remove(); });
+        document.body.appendChild(overlay);
+      });
+    });
+
+    document.getElementById('contactScroll').addEventListener('click', function(){
+      document.getElementById('contactForm').scrollIntoView({behavior:'smooth', block:'center'});
+    });
+  </script>
+</body>
+</html>
